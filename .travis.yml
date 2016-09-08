@@ -1,0 +1,10 @@
+language: go
+go:
+- 1.5.4
+- 1.6.3
+- 1.7.1
+script: go test -race ./...
+after_success:
+    - go get golang.org/x/tools/cmd/cover
+    - go get github.com/mattn/goveralls
+    - $GOPATH/bin/goveralls -service=travis-ci
